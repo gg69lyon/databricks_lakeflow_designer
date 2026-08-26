@@ -25,6 +25,14 @@ databricks_lakeflow_designer/
 |-- .gitignore
 |-- Visual_etl.designer.ipynb   # Pipeline ETL visuel (Visual Data Prep)
 ```
+## Données sur Kaggle
+Les données utilisées dans ce projet proviennent du dataset "Amazon Product Reviews" disponible sur Kaggle :https://www.kaggle.com/code/mohamedbakrey/eda-for-amazon-product-review-sentiment-analysis/input
+
+Pour telecharger les donnees, utiliser la commande suivante :
+```
+kaggle kernels pull mohamedbakrey/eda-for-amazon-product-review-sentiment-analysis
+```
+Prendre le soin de supprimer la colonne "ProfileName" du fichier CSV avant de le charger dans Databricks.
 
 ## Tables Unity Catalog utilisees
 
@@ -58,7 +66,7 @@ databricks_lakeflow_designer/
 | `product_id`  | Identifiant du produit                                   |
 | `avg_score`   | Score moyen des avis par produit                         |
 
-## Prerequis
+## Prérequis
 
 - Un workspace Databricks sur AWS
 - Acces au catalogue `workspace` avec les schemas `reviews_bronze`, `reviews_silver` et `reviews_gold`
@@ -80,3 +88,14 @@ databricks_lakeflow_designer/
 - Unity Catalog (gouvernance des donnees)
 - Databricks AI Functions (`ai_analyze_sentiment`)
 
+## Lakeflow Designer
+![Lakeflow Designer](docs/lakeflow_designer.png)
+
+
+## Dashboard créé avec Genie Code
+prompt utilisé :
+```
+create a dahsboard showing product score. include top 10 products according the sentiment review and score? also include review sentiment breakdown and a chart showing review by product. Use workspace.reviews_gold data as ai_function_9 table
+```
+
+![Dashboard Genie Code](docs/dashboard_genie.png)
